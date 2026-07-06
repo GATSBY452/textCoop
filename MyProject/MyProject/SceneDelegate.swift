@@ -10,22 +10,25 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    private var appCoordinator: Coordinator?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
+      
+        let navigationController = UINavigationController()
+        let coordinator = AppCoordinator(navigationController: navigationController)
+        appCoordinator = coordinator
         
-        let splashVC = SplashViewController()
-        splashVC.onFinish = { [weak self] in
-            self?.showLogin()
-            
-        }
-        window?.rootViewController = splashVC
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
+        coordinator.start()
+        
     }
+   
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

@@ -37,7 +37,7 @@ class SplashViewController: UIViewController {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "kinetiqLogo")
+        imageView.image = UIImage(named: "smallLogo")
         return imageView
     }()
 
